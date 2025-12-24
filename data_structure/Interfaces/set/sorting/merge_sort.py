@@ -1,5 +1,5 @@
 ############################
-## Merge Sort Example
+## Merge Sort
 ############################
 def merge(left, right):
     result = []
@@ -28,7 +28,7 @@ def merge_sort(L, detail = False):
         # divide
         left = merge_sort(L[:middle], detail)
         right = merge_sort(L[middle:], detail)
-        if detail == True:
+        if detail :
             print("Merging", left, "and", right)
         # conquer
         return merge(left, right)

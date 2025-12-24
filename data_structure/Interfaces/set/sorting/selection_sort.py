@@ -5,7 +5,7 @@ def selection_sort(L, detail = False):
         for j in range(i, len(L)):
             if L[j] < L[i]:
                 L[i], L[j] = L[j], L[i]
-            if detail == True:
+            if detail:
                 print(L)
         print()
 

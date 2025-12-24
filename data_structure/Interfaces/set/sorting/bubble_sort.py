@@ -9,7 +9,7 @@ def bubble_sort(L, detail = False):
             if L[j-1] > L[j]:
                 did_swap = True
                 L[j],L[j-1] = L[j-1],L[j]
-            if detail == True:
+            if detail:
                 print(L)
         print()
 
