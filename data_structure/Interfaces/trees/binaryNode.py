@@ -113,8 +113,38 @@ class BinaryNode:
     #
 
     def subtree_insert_before(self, newNode:Self):
-        ...
+        """
+        To insert a node <newNode> before a given node <A> in the traversal order,
+        either node <A> has a left child or not.
+
+            -- If <A> does not have a left child, than we can simply add
+               <newNode> as the left child of <A>.
+            -- Otherwise, if <A> has a left child, we can add <B> as the right child of
+               the last node in <A>’s left subtree (which cannot have a right child).
+
+        Running time is O(h) where h is the height of the tree.
+        """
+        if self.left:
+            A = self.left.subtree_last()
+            A.right, newNode.parent = newNode, A
+        else:
+            A.left, newNode.parent = newNode, A
 
 
     def subtree_insert_after(self, newNode:Self):
-        ...
+        """
+        To insert a node <newNode> after a given node <A> in the traversal order,
+        either node <A> has a right child or not.
+
+            -- If <A> does not have a right child, than we can simply add
+               <newNode> as the left child of <A>.
+            -- Otherwise, if <A> has a left child, we can add <B> as the right child of
+               the last node in <A>’s left subtree (which cannot have a right child).
+
+        Running time is O(h) where h is the height of the tree.
+        """
+        if self.right:
+            A = self.right.subtree_first()
+            (A.left, newNode.parent) = (newNode, A)
+        else:
+            (A.right, newNode.parent) = (newNode, A)
