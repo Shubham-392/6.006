@@ -128,7 +128,7 @@ class BinaryNode:
             A = self.left.subtree_last()
             A.right, newNode.parent = newNode, A
         else:
-            A.left, newNode.parent = newNode, A
+            self.left, newNode.parent = newNode, self
 
 
     def subtree_insert_after(self, newNode:Self):
@@ -137,9 +137,9 @@ class BinaryNode:
         either node <A> has a right child or not.
 
             -- If <A> does not have a right child, than we can simply add
-               <newNode> as the left child of <A>.
-            -- Otherwise, if <A> has a left child, we can add <B> as the right child of
-               the last node in <A>’s left subtree (which cannot have a right child).
+               <newNode> as the right child of <A>.
+            -- Otherwise, if <A> has a right child, we can add <newNode> as the left child of
+               the first node in <A>’s right subtree (which cannot have a left child).
 
         Running time is O(h) where h is the height of the tree.
         """
@@ -147,4 +147,4 @@ class BinaryNode:
             A = self.right.subtree_first()
             (A.left, newNode.parent) = (newNode, A)
         else:
-            (A.right, newNode.parent) = (newNode, A)
+            (self.right, newNode.parent) = (newNode, self)
