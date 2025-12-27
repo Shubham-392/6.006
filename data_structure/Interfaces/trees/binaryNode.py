@@ -148,3 +148,30 @@ class BinaryNode:
             (A.left, newNode.parent) = (newNode, A)
         else:
             (self.right, newNode.parent) = (newNode, self)
+
+    def subtree_delete(self):
+        """
+        Delete the item in node <X> from <X>’s subtree
+
+            -- If <X> is a leaf, detach from parent and return
+            -- Otherwise, <X> has a child
+                ∗ If <X> has a left child, swap items with the predecessor of <X> and recurse
+
+                ∗ Otherwise <X> has a right child, swap items with the successor of <X> and recurse
+        -- Running time is O(h) where h is the height of the tree
+        """
+        if self.left or self.right:
+            if self.left :
+                B = self.predecessor()
+            else:
+                B = self.successor()
+            self.item, B.item = B.item, self.item
+            return B.delete()
+
+        if self.parent:
+            if self.parent.left is self:
+                self.parent.left = None
+            else:
+                self.parent.right = None
+
+        return self
