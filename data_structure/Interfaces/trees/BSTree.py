@@ -63,3 +63,27 @@ class BSTree(BinaryTree):
 
         self.size -= 1
         return ext.item
+
+    def __str__(self):
+        if not self.root:
+            return "BST([])"
+        items = [node.item.value if hasattr(node.item, 'value') else node.item
+                 for node in self.root.subtree_iter()]
+        return f"BST({items})"
+
+
+
+
+class KeyInt:
+    def __init__(self, value, key):
+        self.key = key
+        self.value = value
+
+    def __str__(self) -> str:
+        return self.value
+
+list1 = [KeyInt(3,0), KeyInt(2,1), KeyInt(24,2),KeyInt(20,3),KeyInt(18,4),KeyInt(13,5)]
+
+binary_tree = BSTree()
+binary_tree.build(list1)
+print(binary_tree)
