@@ -15,7 +15,7 @@ class BinaryNode:
 
     By default the traversal Order is: `In-Order`
     """
-    def __init__(self,value):
+    def __init__(self, value):
         self.item = value
         self.parent = None
         self.left = None
@@ -166,7 +166,7 @@ class BinaryNode:
             else:
                 B = self.successor()
             self.item, B.item = B.item, self.item
-            return B.delete()
+            return B.subtree_delete()
 
         if self.parent:
             if self.parent.left is self:
